@@ -12,15 +12,8 @@ This project demonstrates a basic conversational agent you can run locally or in
 
 ## 📁 Repository Structure
 
-.
-├── app.py # Main application script
-├── requirements.txt # Python dependencies
-├── Dockerfile # Container configuration
-├── Jenkinsfile # CI/CD pipeline config
-├── static/ # CSS/JS/images
-├── templates/ # HTML templates
-├── .env # Environment variables
-└── settings.json # Config file
+<img width="544" height="253" alt="image" src="https://github.com/user-attachments/assets/6bb9e8e5-9bd7-489d-9b80-7e9c8496b530" />
+
 
 
 ## 🛠️ Tech Stack
@@ -44,28 +37,34 @@ Before running locally, make sure you have:
    ```bash
    git clone https://github.com/Sanjeevan‑17/Chatbot.git
    cd Chatbot
-Create & activate a Python virtual environment
+:) Create & activate a Python virtual environment
 
 python3 ‑m venv venv
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
-Install dependencies
+
+:) Install dependencies
 
 pip install ‑r requirements.txt
-Run the app
+
+:) Run the app
 
 python app.py
-Open in browser
+
+:) Open in browser
 Visit http://localhost:5000 to interact with the chatbot.
 
 🐳 Running with Docker
-Build the Docker image:
+
+:) Build the Docker image:
 
 docker build ‑t chatbot .
-Run the container:
+
+:) Run the container:
 
 docker run ‑p 5000:5000 chatbot
-Access the app at http://localhost:5000.
+
+:) Access the app at http://localhost:5000.
 
 🧪 Testing
 (Optional — if you add tests later)
@@ -75,12 +74,12 @@ pytest
 🤝 Contributing
 Contributions are welcome! If you want to add features or improve this bot:
 
-Fork the repo
+1. Fork the repo
 
-Create a feature branch (git checkout ‑b my‑feature)
+2. Create a feature branch (git checkout ‑b my‑feature)
 
-Commit your changes
+3. Commit your changes
 
-Push (git push origin my‑feature)
+4. Push (git push origin my‑feature)
 
-Open a Pull Request
+5. Open a Pull Request
