@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        Docker_Credentials = credentials('sanju1701') #add ur docker_credentials name here
+        Docker_Credentials = credentials('sanju1701') 
         Docker_Image = "sanju1701/chatbot"
     }
 
