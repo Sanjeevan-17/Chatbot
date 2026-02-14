@@ -1,0 +1,7 @@
+From python:3.10-slim
+WORKDIR /app
+Copy requirements.txt .
+Run pip install -r requirements.txt
+Copy . .
+EXPOSE 5000
+CMD [ "python", "app.py" ]
