@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # For production, store in environment variable
 
 # Replace with your actual OpenRouter API key
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 # In-memory user store (temporary; replace with DB in production)
 users = {}
