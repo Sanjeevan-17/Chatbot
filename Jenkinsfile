@@ -40,7 +40,7 @@ pipeline {
                     docker pull $Docker_Image:latest
                     docker stop chatbot || true
                     docker rm chatbot || true
-                    docker run -d -p 80:5000 --name chatbot $Docker_Image:latest
+                    docker run -d -p 8070:5000 --name chatbot $Docker_Image:latest
 
                 '''
             }
