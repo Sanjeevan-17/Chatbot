@@ -3,7 +3,7 @@ import requests
 import secrets
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)  # Generate a strong key each time you restart (for production, store in env var)
+app.secret_key = secrets.token_hex(16)  # For production, store in environment variable
 
 # Replace with your actual OpenRouter API key
 OPENROUTER_API_KEY = "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"
@@ -35,7 +35,7 @@ def ask():
             headers={
                 "Authorization": f"Bearer {OPENROUTER_API_KEY}",
                 "Content-Type": "application/json",
-                "Referer": "http://localhost:5000",  # ✅ fixed
+                "Referer": "http://localhost:5000",
                 "X-Title": "FlaskChatApp"
             },
             json={
@@ -43,20 +43,27 @@ def ask():
                 "messages": [
                     {"role": "user", "content": user_msg}
                 ]
-            }
+            },
+            timeout=30  # prevent hanging requests
         )
 
         data = response.json()
+        print("OpenRouter API response:", data)  # Debugging
 
-        # ✅ Safely extract model reply
-        reply = (
-            data.get("choices", [{}])[0]
-            .get("message", {})
-            .get("content", "⚠️ No response received")
-        )
+        # Try to extract reply safely
+        reply = "⚠️ No response received"
+        if "choices" in data and len(data["choices"]) > 0:
+            choice = data["choices"][0]
+            # Depending on API version, content might be under message->content or text
+            if "message" in choice and "content" in choice["message"]:
+                reply = choice["message"]["content"]
+            elif "text" in choice:
+                reply = choice["text"]
+
         return jsonify({"reply": reply})
 
     except Exception as e:
+        print("Error calling OpenRouter API:", e)
         return jsonify({"error": str(e)}), 500
 
 
@@ -96,5 +103,4 @@ def logout():
 # -------------------- Run App --------------------
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-
+    app.run(host="0.0.0.0", port=5000, debug=True)
